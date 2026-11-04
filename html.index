@@ -1,0 +1,496 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Place Called Us ♡</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0b090d;
+  --pink: #e8a6bb;
+  --muted: #a99ba5;
+  --white: #f8edf1;
+  --card: #171118;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .18;
+  background-image: radial-gradient(#fff 0.7px, transparent 0.7px);
+  background-size: 45px 45px;
+  z-index: 0;
+}
+
+button { font-family: inherit; cursor: pointer; }
+
+section {
+  position: relative;
+  z-index: 1;
+  padding: 100px 22px;
+}
+
+.container {
+  width: min(850px, 100%);
+  margin: auto;
+  text-align: center;
+}
+
+.eyebrow {
+  color: var(--pink);
+  letter-spacing: 5px;
+  font-size: 10px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: clamp(48px, 10vw, 88px);
+  line-height: 1.08;
+}
+
+h2 {
+  font-size: clamp(34px, 7vw, 53px);
+  margin-bottom: 20px;
+}
+
+h1 em, h2 em { color: var(--pink); }
+
+p {
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+.hero {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+}
+
+.hero-content { max-width: 700px; }
+
+.hero-sub {
+  margin: 25px auto 35px;
+  max-width: 420px;
+}
+
+.heart {
+  color: var(--pink);
+  font-size: 25px;
+  animation: pulse 2s infinite;
+  display: inline-block;
+}
+
+@keyframes pulse {
+  50% { transform: scale(1.2); }
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border: 1px solid #c58ba4;
+  border-radius: 40px;
+  color: var(--white);
+  background: transparent;
+  transition: .3s;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.btn:hover {
+  background: var(--pink);
+  color: #190f16;
+  transform: translateY(-3px);
+}
+
+.divider {
+  width: 55px;
+  height: 1px;
+  background: var(--pink);
+  margin: 28px auto;
+  opacity: .7;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 42px;
+}
+
+.time-box { min-width: 55px; }
+
+.time-box strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 35px;
+  font-weight: 400;
+  color: var(--pink);
+}
+
+.time-box span {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+.section-card {
+  background: linear-gradient(145deg, #1c141d, #100d12);
+  border: 1px solid #382432;
+  border-radius: 20px;
+  padding: clamp(28px, 6vw, 55px);
+  text-align: left;
+  box-shadow: 0 20px 80px #0005;
+}
+
+.letter-text {
+  white-space: pre-line;
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  line-height: 2.1;
+  color: #ddcbd4;
+}
+
+.signature {
+  color: var(--pink);
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 24px;
+  margin-top: 28px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 40px;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--card);
+  border: 1px solid #332330;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s;
+}
+
+.gallery-item:hover img { transform: scale(1.04); }
+
+.gallery-item p {
+  padding: 14px;
+  font-family: 'Playfair Display', serif;
+  color: var(--pink);
+  text-align: center;
+}
+
+.little-things {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 35px;
+}
+
+.thing {
+  background: #171118;
+  border: 1px solid #382432;
+  border-radius: 15px;
+  padding: 25px 15px;
+}
+
+.thing span {
+  display: block;
+  color: var(--pink);
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.thing h3 { font-size: 20px; margin-bottom: 8px; }
+
+.thing p { font-size: 12px; }
+
+.final {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+}
+
+footer {
+  text-align: center;
+  padding: 35px 15px;
+  border-top: 1px solid #30212d;
+  color: #8d7885;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity .8s, transform .8s;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.floating-heart {
+  position: fixed;
+  bottom: -30px;
+  color: var(--pink);
+  opacity: .5;
+  pointer-events: none;
+  z-index: 2;
+  animation: floatUp 7s linear forwards;
+}
+
+@keyframes floatUp {
+  to { transform: translateY(-110vh) rotate(35deg); opacity: 0; }
+}
+
+@media(max-width:550px) {
+  section { padding: 75px 19px; }
+  .gallery-item img { height: 190px; }
+  .countdown { gap: 13px; }
+  .time-box strong { font-size: 28px; }
+  .little-things { gap: 9px; }
+  .thing { padding: 20px 10px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">A little something, just for you</div>
+    <div class="heart">♡</div>
+    <h1>A Place<br>Called <em>Us.</em></h1>
+    <p class="hero-sub">
+      Some people become memories. Some become a part of your favourite chapters.
+      This little corner of the internet belongs to you.
+    </p>
+    <button class="btn" onclick="document.getElementById('letter').scrollIntoView()">
+      OPEN YOUR LITTLE WORLD ↓
+    </button>
+
+    <div class="countdown" id="countdown">
+      <div class="time-box"><strong id="days">00</strong><span>DAYS</span></div>
+      <div class="time-box"><strong id="hours">00</strong><span>HOURS</span></div>
+      <div class="time-box"><strong id="minutes">00</strong><span>MINUTES</span></div>
+      <div class="time-box"><strong id="seconds">00</strong><span>SECONDS</span></div>
+    </div>
+    <p style="font-size:10px;margin-top:13px;letter-spacing:2px">
+      UNTIL YOUR SPECIAL DAY ♡
+    </p>
+  </div>
+</section>
+
+<!-- LETTER -->
+<section id="letter">
+  <div class="container reveal">
+    <div class="eyebrow">01 / A letter for you</div>
+    <h2>Dear <em>Antara,</em></h2>
+    <div class="divider"></div>
+
+    <div class="section-card">
+      <div class="letter-text">Happy Birthday, my favourite person. ♡
+
+I don't really know where to begin, because there are so many little things I want to tell you.
+
+It's funny how an ordinary conversation can turn into something so meaningful. What started as a simple hello became conversations I look forward to, little moments I keep remembering, and a person who has found a very special place in my world.
+
+I hope this new chapter brings you everything your heart has been quietly wishing for.
+
+I hope you never stop being curious, dreaming, laughing at the smallest things, and becoming the person you want to be.
+
+And whenever life gets a little overwhelming, I hope you remember that you deserve kindness, patience, happiness and all the beautiful things this world has to offer.
+
+Thank you for being you.
+
+Here's to more conversations, more memories, more silly moments, and a thousand little stories still waiting to happen.
+
+Happy Birthday, Antara.
+
+You deserve a beautiful life. Always. ♡</div>
+
+      <div class="signature">With all my love,</div>
+      <p style="margin-top:5px;color:var(--pink)">Bhavesh ♡</p>
+    </div>
+  </div>
+</section>
+
+<!-- MEMORIES -->
+<section id="memories">
+  <div class="container reveal">
+    <div class="eyebrow">02 / Little memories</div>
+    <h2>Our little <em>universe.</em></h2>
+    <p>Some moments deserve their own little place.</p>
+
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="photo1.jpg" alt="A favourite memory">
+        <p>A favourite little moment ♡</p>
+      </div>
+      <div class="gallery-item">
+        <img src="photo2.jpg" alt="A special memory">
+        <p>One for the memories</p>
+      </div>
+      <div class="gallery-item">
+        <img src="photo3.jpg" alt="A beautiful moment">
+        <p>Just because it's you</p>
+      </div>
+      <div class="gallery-item">
+        <img src="photo4.jpg" alt="Another favourite memory">
+        <p>And many more to come ♡</p>
+      </div>
+    </div>
+    <p style="margin-top:18px;font-size:11px">
+      Every picture has a little story. Every story has you.
+    </p>
+  </div>
+</section>
+
+<!-- LITTLE THINGS -->
+<section>
+  <div class="container reveal">
+    <div class="eyebrow">03 / The little things</div>
+    <h2>Things that make you <em>you.</em></h2>
+    <p>It's never just the big moments.</p>
+
+    <div class="little-things">
+      <div class="thing">
+        <span>♡</span>
+        <h3>Your smile</h3>
+        <p>A little moment that makes everything feel lighter.</p>
+      </div>
+      <div class="thing">
+        <span>✧</span>
+        <h3>Your mind</h3>
+        <p>The way you think, dream and see the world.</p>
+      </div>
+      <div class="thing">
+        <span>☁</span>
+        <h3>Your presence</h3>
+        <p>Even ordinary conversations become special.</p>
+      </div>
+      <div class="thing">
+        <span>∞</span>
+        <h3>Your uniqueness</h3>
+        <p>There is only one you, and that's wonderful.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <div class="container reveal">
+    <div class="heart">♡</div>
+    <div class="eyebrow">04 / One last thing</div>
+    <h2>May life always be<br><em>kind to you.</em></h2>
+    <div class="divider"></div>
+    <p style="max-width:430px;margin:auto">
+      No matter how many pages life writes, I hope you fill yours with
+      beautiful experiences, endless growth, genuine happiness and love.
+    </p>
+    <h2 style="font-size:35px;margin-top:35px">
+      Happy Birthday, <em>Antara.</em>
+    </h2>
+    <p style="margin-top:20px">Made with love, just for you.</p>
+    <div class="heart" style="margin-top:25px">♡</div>
+  </div>
+</section>
+
+<footer>
+  A PLACE CALLED US · MADE WITH ♡
+  <br><br>
+  BHAVESH × ANTARA
+</footer>
+
+<script>
+// Birthday countdown: 5 November 2026
+const birthday = new Date("2026-11-05T00:00:00+05:30").getTime();
+
+function updateCountdown() {
+  const now = Date.now();
+  const distance = birthday - now;
+
+  if (distance <= 0) {
+    document.getElementById("countdown").innerHTML =
+      '<div class="eyebrow">IT IS YOUR SPECIAL DAY ♡</div>';
+    return;
+  }
+
+  document.getElementById("days").textContent =
+    Math.floor(distance / 86400000).toString().padStart(2,"0");
+  document.getElementById("hours").textContent =
+    Math.floor((distance % 86400000) / 3600000).toString().padStart(2,"0");
+  document.getElementById("minutes").textContent =
+    Math.floor((distance % 3600000) / 60000).toString().padStart(2,"0");
+  document.getElementById("seconds").textContent =
+    Math.floor((distance % 60000) / 1000).toString().padStart(2,"0");
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+// Floating hearts
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "floating-heart";
+  heart.textContent = Math.random() > .5 ? "♡" : "✧";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (12 + Math.random() * 15) + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 7000);
+}
+setInterval(createHeart, 1200);
+</script>
+
+</body>
+</html>
