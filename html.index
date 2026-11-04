@@ -26,7 +26,7 @@ body {
   color: var(--white);
   font-family: 'DM Sans', sans-serif;
   overflow-x: hidden;
-}
+} 
 
 body::before {
   content: "";
